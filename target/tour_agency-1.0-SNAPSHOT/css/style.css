@@ -1,0 +1,38 @@
+body{
+  margin: 0;
+  align-items: center;
+}
+
+table{
+  border-collapse: collapse;
+}
+
+td,th{
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){
+  background-color: #dddddd;
+}
+
+.content{
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  background-color: #e5e5e8;
+  border-radius: 7px;
+
+}
+
+.money-transfer{
+  margin: 0;
+  background-color: #ffe53a;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.user_name{
+  color: #c9a721;
+}
