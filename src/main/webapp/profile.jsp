@@ -52,11 +52,6 @@
 						Welcome <p class="user_name"> <%=uname%> </p>! Make life easier with aar wallet!
                   </span><br>
 
-
-
-
-
-
               <div >
               <form action="Profile" method="post">
 
