@@ -15,40 +15,30 @@
 </head>
 <body>
 
-<%--<form action="Register" method="post">--%>
-<%--    <table>--%>
-<%--        <tr>--%>
-<%--            <td>User Name: </td> <td><input type="text" name="uname"></td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td>password: </td> <td><input type="text" name="password"></td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td>Email: </td> <td><input type="email" name="email"></td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td>Phone: </td> <td><input type="number" name="phone"></td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td> </td> <td><input type="submit" name="register"></td>--%>
-<%--        </tr>--%>
-<%--    </table>--%>
-<%--    <a href="/tour_agency_war_exploded/login.jsp">Login</a>--%>
-<%--</form>--%>
 
+<%
 
+    HttpSession hs = request.getSession();
+    String message  = (String) hs.getAttribute("message");
+    if(message==null){
+        message = "";
+    }
+%>
 
 
 <%-------------------------------------------------------------------------------------------------%>
 <div class="content">
-    <div class="container-login100">
-        <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+    <span>
+        <em class="user_name"><%=message%></em>
+    </span>
+    <div>
+        <div>
             <form class="login100-form validate-form" action="Register" method="post">
-					<span class="login100-form-title p-b-49">
+					<span>
 						Registration
 					</span>
 
-                <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is required">
+                <div data-validate = "Username is required">
                     <span class="label-input100">Username</span>
                     <input class="input100" type="text" name="uname" placeholder="Type your username">
                     <span class="focus-input100" data-symbol="&#xf206;"></span>
@@ -72,15 +62,15 @@
                     <span class="focus-input100" data-symbol="&#xf206;"></span>
                 </div>
 
-                <div class="text-right p-t-8 p-b-31">
+                <div>
                     <a href="#">
                         Forgot password?
                     </a>
                 </div>
 
-                <div class="container-login100-form-btn">
-                    <div class="wrap-login100-form-btn">
-                        <div class="login100-form-bgbtn"></div>
+                <div>
+                    <div>
+
                         <button class="login100-form-btn" name="register" type="submit">
                             Sign Up
                         </button>

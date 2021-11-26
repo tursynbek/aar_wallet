@@ -1,5 +1,7 @@
 package com.example.tour_agency;
 
+import lombok.SneakyThrows;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -14,8 +16,11 @@ public class Register extends HttpServlet {
 
     }
 
+    @SneakyThrows
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession hs = request.getSession();
+        String message;
         String uname=request.getParameter("uname");
         String password=request.getParameter("password");
         String email=request.getParameter("email");
@@ -53,8 +58,16 @@ public class Register extends HttpServlet {
 
         Member member = new Member(uname, pass, email, phone);
         RegisterDao rdao = new RegisterDao();
-        String result = rdao.insert(member);
-        response.getWriter().println(result);
+        Boolean result = rdao.insert(member);
 
+
+        if (result){
+            response.sendRedirect("/tour_agency_war_exploded/login.jsp");
+        } else {
+            message = "Username is already chosen!";
+            hs.setAttribute("message", message);
+            response.sendRedirect("/tour_agency_war_exploded/registration.jsp");
+        }
+        response.getWriter().println(result);
     }
 }

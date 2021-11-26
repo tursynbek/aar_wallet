@@ -10,7 +10,7 @@
 
 </head>
 <body>
-<div class="limiter">
+<div class="content">
     <div class="container-login100">
         <span class="login100-form-title p-l-49">
 						Welcome! Make life easier with aar wallet!

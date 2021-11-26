@@ -4,7 +4,8 @@
 
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.Connection" %><%--
+<%@ page import="java.sql.Connection" %>
+<%--
   Created by IntelliJ IDEA.
   User: arman
   Date: 03.10.2021
@@ -46,24 +47,26 @@
 
       %>
       <div class="content">
-
-                <span >
-						Welcome <em class="user_name"> <%=uname%> </em>! Make life easier with aar wallet!
-                </span><br>
+          <div class="header">
+              <span >
+                  Welcome <em class="user_name"> <%=uname%> </em>! Make life easier with aar wallet!
+              </span><br>
 
               <span >
 						Your email: <%=email%>
-                  </span>
+              </span>
               <br>
 
               <span >
 						Bank amount: <%=bank%>
-                  </span>
+              </span>
               <br>
               <a href="/tour_agency_war_exploded/login.jsp">Logout</a>
 
               <br>
               <hr>
+          </div>
+
 
               <%-- -------------------------------START FORM INPUT TRANSFER----------------------------          --%>
             <div class="form-popup" id="myForm">
@@ -93,7 +96,7 @@
                       <div>
                           <div>
 
-                              <button type="submit">
+                              <button type="submit" class="btn cancel">
                                   Send money
                               </button>
 
@@ -151,6 +154,10 @@
                           %>
                       </table>
 
+                      <form action="<%=request.getContextPath()%>/Delete" method="post">
+                          <button type="submit" class="delete-button">Delete history</button>
+                      </form>
+
 
                   </div>
 
@@ -191,25 +198,13 @@
                               con.close();
                           %>
                       </table>
-
+                      <form action="<%=request.getContextPath()%>/DeleteIncome" method="post">
+                          <button type="submit" class="delete-button">Delete history</button>
+                      </form>
 
                   </div>
 
-
-
-
-
-
-
-
-
-
       </div>
-
-
-
-
-
 </body>
 </html>
 
@@ -221,7 +216,7 @@
 
     function closeForm() {
         document.getElementById("myForm").style.display = "none";
-        document.getElementById("myButton").style.display = "display";
+        document.getElementById("myButton").style.display = "block";
     }
 
 </script>

@@ -31,10 +31,10 @@ public class RegisterDao {
         return con;
     }
 
-    public String insert(Member member){
+    public Boolean insert(Member member){
         loadDriver(dbdriver);
         Connection con=getConnection();
-        String result="data entered successfully";
+        Boolean result= true ;
         String sql="insert into member values(?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -45,8 +45,9 @@ public class RegisterDao {
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-            result = "Error: Data not entered!";
+            result = false;
         }
+
         return result;
     }
 
@@ -79,32 +80,39 @@ public class RegisterDao {
         return member;
     }
 
+    public void delete(String uname){
+        loadDriver(dbdriver);
+        Connection con = getConnection();
+
+        String query = ("DELETE FROM transaction WHERE sender=?");
+
+        try(PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, uname);
+            ps.executeUpdate();
+            con.close();
+        } catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public void deleteIncome(String touser){
+        loadDriver(dbdriver);
+        Connection con = getConnection();
+
+        String query = ("DELETE FROM transaction WHERE receiver=?");
+
+        try(PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, touser);
+            ps.executeUpdate();
+            con.close();
+        } catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
     public void transaction(String uname, String touser, int amount){
         loadDriver(dbdriver);
         Connection con = getConnection();
-//        String uname1 = null;
-//        try {
-//            String query3 = ("SELECT * from member WHERE uname=?");
-//            Statement s = con.createStatement();
-//            ResultSet rs = s.executeQuery(query3);
-//
-//
-//            while(rs.next()){
-//                uname1 = rs.getString(1);
-//            }
-//            System.out.println(uname1);
-//
-//
-//        }catch(Exception e){
-//            System.out.println(e);
-//        }
-//
-//        if(Objects.equals(uname1, "null")){
-//            System.out.println("Invalid username");
-//
-//        }
-
-
 
         String query = ("UPDATE member SET phone=phone+? WHERE uname=?");
         String query2 = ("UPDATE member SET phone=phone-? WHERE uname=?");

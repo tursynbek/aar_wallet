@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Member
 {
-    private String uname, email, pass;
+    private String uname, pass, email;
     private int phone;
 
 
