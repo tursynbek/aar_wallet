@@ -1,7 +1,7 @@
-<%@ page import="java.lang.reflect.Member" %>
+
 
 <%@ page import="com.example.tour_agency.RegisterDao" %>
-<%@ page import="java.util.Objects" %>
+
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.Connection" %><%--
@@ -17,7 +17,7 @@
     <title>aar wallet | my page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -46,68 +46,68 @@
 
       %>
       <div class="content">
-          <div >
 
                 <span >
-						Welcome <p class="user_name"> <%=uname%> </p>! Make life easier with aar wallet!
-                  </span><br>
+						Welcome <em class="user_name"> <%=uname%> </em>! Make life easier with aar wallet!
+                </span><br>
 
-
-
-
-
-
-              <div >
-              <form action="Profile" method="post">
-
-                  <span >
+              <span >
 						Your email: <%=email%>
                   </span>
-                  <br>
+              <br>
 
-                  <span >
+              <span >
 						Bank amount: <%=bank%>
                   </span>
-                  <br>
-                  <a href="/tour_agency_war_exploded/login.jsp">Logout</a>
+              <br>
+              <a href="/tour_agency_war_exploded/login.jsp">Logout</a>
 
-                  <br>
-                  <hr>
+              <br>
+              <hr>
 
-                  <div class="money-transfer">
-
+              <%-- -------------------------------START FORM INPUT TRANSFER----------------------------          --%>
+            <div class="form-popup" id="myForm">
+                      <form action="Profile" method="post" class="form-container">
                       <span>
 						Money transfer
-                  </span>
+                      </span>
 
                       <div  data-validate = "Username is required">
                           <span >AAR Username</span>
-                          <input type="text" name="touser" placeholder="Type username of receiver">
+                          <input type="text" name="touser" placeholder="Type username of receiver" required>
                           <span data-symbol="&#xf206;"></span>
                       </div>
 
-                      <div  data-validate="Amount is required">
+                      <div data-validate="Amount is required">
                           <span >Amount</span>
-                          <input  type="number" name="amount" placeholder="Type amount">
+                          <input  type="number" name="amount" placeholder="Type amount" required>
                           <span  data-symbol="&#xf190;"></span>
                       </div>
 
-                      <div >
+                      <div>
                           <a href="#">
                               FAQ
                           </a>
                       </div>
 
-                      <div >
+                      <div>
                           <div>
-                              <div></div>
+
                               <button type="submit">
                                   Send money
                               </button>
+
+                              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
                           </div>
                       </div>
-                  </div>
 
+                </form>
+            </div>
+
+            <button class="open-button" id="myButton" onclick="openForm()">
+              Transfer Money
+            </button>
+                  <%-- ----------------------- END FORM INPUT TRANSFER-------------------     --%>
 
                   <hr>
                   <br>
@@ -199,30 +199,11 @@
 
 
 
-<%--                      <tr>--%>
-<%--                          <td>User: </td><td><input type="text" name="touser"></td>--%>
-<%--                      </tr>--%>
-<%--                      <tr>--%>
-<%--                          <td>Amount: </td><td><input type="text" name="amount"></td>--%>
-<%--                      </tr>--%>
-<%--                      <tr>--%>
-<%--                          <td>--%>
-
-<%--                          </td>--%>
-<%--                          <td>--%>
-<%--                              <input type="submit">--%>
-<%--                          </td>--%>
-<%--                      </tr>--%>
-
-              </form>
-              </div>
 
 
 
 
 
-
-          </div>
       </div>
 
 
@@ -231,3 +212,16 @@
 
 </body>
 </html>
+
+<script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+        document.getElementById("myButton").style.display = "none";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+        document.getElementById("myButton").style.display = "display";
+    }
+
+</script>
